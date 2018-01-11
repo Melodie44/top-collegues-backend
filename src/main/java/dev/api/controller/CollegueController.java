@@ -1,9 +1,6 @@
 package dev.api.controller;
 
 import java.util.List;
-import java.util.Set;
-
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import dev.api.entite.Collegue;
 import dev.api.repository.CollegueRepository;
-import net.minidev.json.parser.JSONParser;
 
 @RestController
 @RequestMapping("/collegues")
