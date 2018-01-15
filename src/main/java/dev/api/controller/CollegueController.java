@@ -38,7 +38,7 @@ public class CollegueController {
 	}
 	
 	@RequestMapping(method = RequestMethod.PATCH, path = "/{pseudo}/")
-	public Collegue ModifierScoreCollegue(@PathVariable("pseudo") String pseudo,
+	public List<Collegue> ModifierScoreCollegue(@PathVariable("pseudo") String pseudo,
 			@RequestBody String action) throws JSONException {
 		
 		// récupération de la valeur string JSON
@@ -54,6 +54,8 @@ public class CollegueController {
 			collegue.setScore(collegue.getScore()-5);
 		}
 		
-		return collegueRepo.save(collegue);
+		collegueRepo.save(collegue);
+		
+		return ListeCollaborateurs();
 	}
 }
