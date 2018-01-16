@@ -4,17 +4,19 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="AVIS")
 public class Avis {
 	
+	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	
 	@Column(name="AVIS")
-	private String avis;
+	private String message;
 
 	public Avis() {
 		
@@ -28,11 +30,11 @@ public class Avis {
 		this.id = id;
 	}
 
-	public String getAvis() {
-		return avis;
+	public String getMessage() {
+		return message;
 	}
 
-	public void setAvis(String avis) {
-		this.avis = avis;
+	public void setMessage(String message) {
+		this.message = message;
 	}
 }
