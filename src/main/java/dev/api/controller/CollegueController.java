@@ -27,21 +27,18 @@ public class CollegueController {
 	private CollegueRepository collegueRepo;
 	
 	@GetMapping
-	public List<Collegue> ListeCollaborateurs() {
+	public List<Collegue> ListeCollegues() {
 
 		return collegueRepo.findAll();
 	}
 	
 	@PostMapping
-	public Collegue SauvegarderCollegue(@RequestBody Collegue collegue) {
+	public List<Collegue> SauvegarderCollegue(@RequestBody Collegue collegue) {
 
 		if(collegueRepo.findByNom(collegue.getNom()) == null){
-			return collegueRepo.save(collegue);
+			collegueRepo.save(collegue);
 		}
-		else {
-			return null;
-		}
-		
+		return ListeCollegues();
 	}
 	
 	@RequestMapping(method = RequestMethod.PATCH, path = "/{pseudo}/")
