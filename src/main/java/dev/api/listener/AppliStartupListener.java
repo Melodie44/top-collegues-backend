@@ -5,8 +5,12 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 
+import dev.api.entite.Avis;
 import dev.api.entite.Collegue;
+import dev.api.entite.Vote;
+import dev.api.repository.AvisRepository;
 import dev.api.repository.CollegueRepository;
+import dev.api.repository.VoteRepository;
 
 
 @Component
@@ -14,7 +18,13 @@ public class AppliStartupListener implements ApplicationListener<ApplicationRead
 
 	@Autowired
 	CollegueRepository colleguebRepo;
-
+	
+	@Autowired
+	AvisRepository avisRepo;
+	
+	@Autowired
+	VoteRepository voteRepo;
+	
 	/**
 	 * This event is executed as late as conceivably possible to indicate that the
 	 * application is ready to service requests.
@@ -41,6 +51,35 @@ public class AppliStartupListener implements ApplicationListener<ApplicationRead
 		colleguebRepo.save(collegue2);
 		colleguebRepo.save(collegue3);
 		
+		Avis avis1 = new Avis();
+		avis1.setMessage("commentaire 1");
+		
+		Avis avis2 = new Avis();
+		avis2.setMessage("commentaire 2");
+		
+		avisRepo.save(avis1);
+		avisRepo.save(avis2);
+		
+		Vote vote1 = new Vote();
+		vote1.setAvis(avis1);
+		vote1.setCollegue(collegue1);
+		
+		Vote vote2 = new Vote();
+		vote2.setAvis(avis2);
+		vote2.setCollegue(collegue2);
+		
+		Vote vote3 = new Vote();
+		vote3.setAvis(avis1);
+		vote3.setCollegue(collegue3);
+		
+		Vote vote4 = new Vote();
+		vote4.setAvis(avis2);
+		vote4.setCollegue(collegue1);
+		
+		voteRepo.save(vote1);
+		voteRepo.save(vote2);
+		voteRepo.save(vote3);
+		voteRepo.save(vote4);
 	}
 
 }
