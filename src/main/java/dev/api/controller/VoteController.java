@@ -1,6 +1,7 @@
 package dev.api.controller;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,7 +32,7 @@ public class VoteController {
 		if(since != 0) {
 			listVotes = voteRepo.findAll().stream().filter(v -> v.getId() > since).collect(Collectors.toList());
 		}else {
-			listVotes = voteRepo.findAll().stream().unordered().limit(3).collect(Collectors.toList());
+			listVotes = voteRepo.findAll().stream().sorted(Comparator.comparing(Vote::getId).reversed()).limit(3).collect(Collectors.toList());
 		}
 		
 		return listVotes;
