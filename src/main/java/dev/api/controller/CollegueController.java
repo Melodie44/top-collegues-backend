@@ -56,6 +56,6 @@ public class CollegueController {
 		
 		collegueRepo.save(collegue);
 		
-		return ListeCollaborateurs();
+		return ListeCollegues();
 	}
 }
